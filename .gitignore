@@ -1,0 +1,10 @@
+# Mage AI - archivos internos que no deben versionarse
+mage-project/.logs/
+mage-project/.mage_data/
+mage-project/.file_versions/
+mage-project/.variables/
+__pycache__/
+*.pyc
+
+# Nunca subir credenciales reales
+.env

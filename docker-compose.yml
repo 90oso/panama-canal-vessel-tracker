@@ -1,0 +1,66 @@
+services:
+  postgres:
+    image: postgis/postgis:16-3.4
+    container_name: ais_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT_HOST}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  mage:
+    image: mageai/mageai:latest
+    container_name: ais_mage
+    command: bash -c "pip install -r /home/src/requirements.txt && mage start ais_pipelines"
+    environment:
+      POSTGRES_DBNAME: ${POSTGRES_DB}
+      POSTGRES_SCHEMA: public
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      DATADOCKED_API_KEY: ${DATADOCKED_API_KEY}
+    ports:
+      - "6789:6789"
+    volumes:
+      - ./mage-project:/home/src
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  api:
+    build: ./api
+    container_name: ais_api
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  dashboard:
+      build: ./dashboard
+      container_name: ais_dashboard
+      environment:
+        API_URL: http://api:8000
+      ports:
+        - "8501:8501"
+      depends_on:
+        - api
+
+volumes:
+  pgdata:
