@@ -158,5 +158,6 @@ El dashboard en Streamlit permite:
 
 ## Autores
 Rafael Batista
+Daniel Salinas
 
 Proyecto semestral — Tópicos Especiales II.
