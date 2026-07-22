@@ -162,6 +162,9 @@ El dashboard en Streamlit permite:
 - Filtrar por radio desde un punto central definido por el usuario, consumiendo el endpoint espacial de la API.
 - Consultar el detalle tabular de cada buque (MMSI, nombre, tipo, velocidad, rumbo, distancia).
 
+<img width="1505" height="900" alt="Captura de pantalla 2026-07-22 183851" src="https://github.com/user-attachments/assets/707c5860-9969-4c61-9d8a-c22411eeeb7a" />
+
+
 ## Autores
 Rafael Batista
 
