@@ -24,6 +24,8 @@ DataDocked API (REST, AIS)
         v
    Streamlit (dashboard interactivo)
 ```
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/fee1e42a-2d7a-498a-9e34-9a26117d42d6" />
+
 
 Todo el stack corre en contenedores Docker orquestados con Docker Compose.
 
@@ -158,6 +160,7 @@ El dashboard en Streamlit permite:
 
 ## Autores
 Rafael Batista
+
 Daniel Salinas
 
 Proyecto semestral — Tópicos Especiales II.
