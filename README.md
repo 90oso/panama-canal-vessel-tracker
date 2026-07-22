@@ -24,7 +24,7 @@ DataDocked API (REST, AIS)
         v
    Streamlit (dashboard interactivo)
 ```
-<img width="578" height="552" alt="Captura de pantalla 2026-07-22 183703" src="https://github.com/user-attachments/assets/bb85daeb-dd51-4f67-b523-056f752009bc" />
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/dc8e0400-9611-457a-93fa-8c2d7cd8f74e" />
 
 
 
