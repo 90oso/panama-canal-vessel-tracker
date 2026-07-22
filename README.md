@@ -125,6 +125,9 @@ El pipeline `ais_panama_ingesta` en Mage AI consta de tres bloques:
 2. **`clean_vessels`** — limpia y estandariza los registros, descartando aquellos sin coordenadas válidas.
 3. **`load_to_postgis`** — carga los datos a las tres tablas, usando `ST_MakePoint(lon, lat)` para construir la geometría espacial.
 
+<img width="578" height="552" alt="image" src="https://github.com/user-attachments/assets/47ffa16e-6e08-4fbf-b1e4-6f2df6bb00c9" />
+
+
 Un trigger programado ejecuta el pipeline automáticamente en intervalos definidos.
 
 ### Nota sobre el uso de la API en vivo
